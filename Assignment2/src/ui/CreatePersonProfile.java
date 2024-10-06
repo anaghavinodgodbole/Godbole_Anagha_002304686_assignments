@@ -407,7 +407,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         
-        // Retrieve input fields
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String ssn = txtSsn.getText();
@@ -415,7 +414,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
         String genderInput = txtGender.getText();
         String ageInput = txtAge.getText();
 
-        // Input validation for mandatory fields
         if (firstName.isBlank() || lastName.isBlank() || ssn.isBlank()
                 || heightInput.isBlank() || ageInput.isBlank()
                 || genderInput.isBlank()
@@ -436,7 +434,7 @@ public class CreatePersonProfile extends javax.swing.JPanel {
             return;
         }
 
-        // Parse height input
+        
         float height;
         try {
             height = Float.parseFloat(heightInput);
@@ -449,7 +447,7 @@ public class CreatePersonProfile extends javax.swing.JPanel {
             return;
         }
 
-        // Parse gender
+       
         char gender;
         if (genderInput.length() > 0) {
             gender = genderInput.charAt(0);
@@ -458,7 +456,7 @@ public class CreatePersonProfile extends javax.swing.JPanel {
             return;
         }
 
-        // Parse age
+       
         int age;
         try {
             age = Integer.parseInt(ageInput);
@@ -471,7 +469,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
             return;
         }
 
-        // Retrieve home address inputs
         Address homeAddress = p.getHomeAddress();
         homeAddress.setStreetAddress(txtHomeAddrStAddr.getText());
         homeAddress.setUnitNumber(txtHomeUnitNumber.getText());
@@ -480,7 +477,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
         homeAddress.setZipCode(txtHomeAddrZipCode.getText());
         homeAddress.setPhoneNumber(Long.parseLong(txtHomeAddrPhoneNumber.getText()));
 
-        // Retrieve work address inputs
         Address workAddress = p.getWorkAddress();
         workAddress.setStreetAddress(txtWorkAddrStAddr.getText());
         workAddress.setUnitNumber(txtWorkUnitNumber.getText());
@@ -498,7 +494,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
             return;
         }
 
-        // Create and populate the Person object
         Person p = personDirectory.addPerson();
         p.setFirstName(firstName);
         p.setLastName(lastName);
@@ -509,10 +504,9 @@ public class CreatePersonProfile extends javax.swing.JPanel {
         p.setHomeAddress(homeAddress);
         p.setWorkAddress(workAddress);
 
-        // Success message
+       
         JOptionPane.showMessageDialog(this, "Profile created successfully!", "Information", JOptionPane.INFORMATION_MESSAGE);
 
-        // Clear input fields after successful creation
         txtFirstName.setText("");
         txtLastName.setText("");
         txtAge.setText("");
@@ -581,7 +575,6 @@ public class CreatePersonProfile extends javax.swing.JPanel {
         homeAddress.setZipCode(txtHomeAddrZipCode.getText());
         homeAddress.setPhoneNumber(Long.parseLong(txtHomeAddrPhoneNumber.getText()));
 
-        // Retrieve work address inputs
         Address workAddress = p.getWorkAddress();
         workAddress.setStreetAddress(txtWorkAddrStAddr.getText());
         workAddress.setUnitNumber(txtWorkUnitNumber.getText());
