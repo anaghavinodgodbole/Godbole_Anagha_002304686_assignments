@@ -36,13 +36,27 @@ public class PersonDirectory {
     }
     
     public Person searchPerson(String searchText){
+        System.out.println("text is" +  searchText);
+        for(Person a : personList){
+          System.out.println("a is" + a);
+          Address a1 = a.getHomeAddress();
+          Address a2 = a.getWorkAddress();
+          System.out.println(a1.getStreetAddress());
+          System.out.println(a2.getStreetAddress());
+          
+       }
         for(Person p: personList){
+            System.out.println("p is" + p);
             Address homeAddr = p.getHomeAddress();
             Address workAddr = p.getWorkAddress();
+            System.out.println(p.getFirstName());
+            System.out.println(p.getFirstName().toLowerCase().contains(searchText.toLowerCase()));
+            System.out.println(p.getLastName().contains(searchText));
             
             searchText = searchText.toLowerCase();
             if(p.getFirstName().toLowerCase().contains(searchText) || p.getLastName().toLowerCase().contains(searchText) 
                     || homeAddr.getStreetAddress().toLowerCase().contains(searchText) || workAddr.getStreetAddress().toLowerCase().contains(searchText)){
+                System.out.println("p is" + p);
                 return p; 
             }
         }
