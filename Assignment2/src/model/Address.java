@@ -5,14 +5,13 @@
 
 package model;
 
-public class Address {   
-    //data members 
+public class Address {
     private String streetAddress;
     private String unitNumber;
     private String city;
     private String state;
     private String zipCode;
-    private long phoneNumber;
+    private String phoneNumber;
 
     public String getStreetAddress() {
         return streetAddress;
@@ -54,11 +53,11 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
