@@ -132,6 +132,27 @@ public class ManagePersonDetails extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        if(!txtSearchBox.getText().isBlank()){
+            String searchText = txtSearchBox.getText();
+            Person foundPerson = personDirectory.searchPerson(searchText);
+
+            System.out.println("btnSearchActionPerformed");
+            System.out.println(searchText);
+            System.out.println(foundPerson);
+            if(foundPerson != null){
+                CreatePersonProfile panel = new CreatePersonProfile(viewProfilePanel, personDirectory, foundPerson, true);
+                viewProfilePanel.add("VewAccountJPanel", panel);
+                CardLayout layout = (CardLayout) viewProfilePanel.getLayout();
+                layout.next(viewProfilePanel);
+            }else{
+                JOptionPane.showConfirmDialog(null, "Profile not found. Please check the name or address and try again", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showConfirmDialog(null, "Please type first in the search bar", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }                                         
    
     private void btnViewDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetails1ActionPerformed
         // TODO add your handling code here:
