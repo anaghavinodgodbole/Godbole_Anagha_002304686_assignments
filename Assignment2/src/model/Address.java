@@ -5,7 +5,8 @@
 
 package model;
 
-public class Address {    
+public class Address {   
+    //data members 
     private String streetAddress;
     private String unitNumber;
     private String city;
