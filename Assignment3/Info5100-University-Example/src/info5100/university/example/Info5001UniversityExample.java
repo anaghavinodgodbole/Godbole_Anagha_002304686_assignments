@@ -27,6 +27,54 @@ import info5100.university.example.Persona.Transcript;
  */
 public class Info5001UniversityExample {
 
+    public static String getGrade(float grade){
+        if(grade<=4.0 && grade>3.7)
+        {
+            return "A";
+        }
+        if(grade<=3.7 && grade>3.3)
+        {
+            return "A-";
+        }
+        if(grade<=3.3 && grade>3.0)
+        {
+            return "B+";
+        }
+        if(grade<=3.0 && grade>2.7)
+        {
+            return "B";
+        }
+        if(grade<=2.7 && grade>2.3)
+        {
+            return "B-";
+        }
+        if(grade<=2.3 && grade>2.0)
+        {
+            return "C+";
+        }
+        if(grade<=2.0 && grade>1.7)
+        {
+            return "C";
+        }
+        if(grade<=1.7 && grade>1.3)
+        {
+            return "C-";
+        }
+        if(grade<=1.3 && grade>1.0)
+        {
+            return "D+";
+        }
+        if(grade<=1.0 && grade>0.7)
+        {
+            return "D";
+        }
+        if(grade<=0.7 && grade>0.0)
+        {
+            return "D-";
+        }
+        return "F";
+    }
+
     /**
      * @param args the command line arguments
      */
