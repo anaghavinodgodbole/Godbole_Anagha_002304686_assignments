@@ -74,6 +74,32 @@ public class Info5001UniversityExample {
             FacultyProfile assignedTeacher = teacherList.get(j % teacherList.size()); 
             courseoffer.AssignAsTeacher(assignedTeacher);
         }
+
+          List<String> grades = new ArrayList<>();
+        grades.add("3.0");
+        grades.add("4.0");
+        grades.add("2.0");
+
+         // Create 10 students
+        for (int i = 1; i <= 10; i++) {
+            int baseNumber = 112300;
+            int idNumber = baseNumber + i + 100;
+            Person studentPerson = new Person(String.format("%07d", idNumber));
+            StudentProfile studentProfile = sd.newStudentProfile(studentPerson);
+
+            CourseLoad courseload = studentProfile.newCourseLoad("Spring 2025");
+            //Enroll students in random courses
+            for (int j = 0; j < 3; j++) { // Enroll students in 5 random elective courses
+                int randomCourseIndex = random.nextInt(coursesList.length);
+                Course electiveCourse = coursesList[randomCourseIndex];
+                CourseOffer courseOffer = courseschedule.getCourseOfferByNumber(electiveCourse.getCOurseNumber());
+                if (courseOffer != null) {
+                    SeatAssignment seatAssignment = courseload.registerStudentInClass(courseOffer);
+                    String selectedGrade = grades.get(random.nextInt(grades.size()));
+                    seatAssignment.setGrade(Float.parseFloat(selectedGrade));
+                }
+            }
+        }
        
         int total = department.calculateRevenuesBySemester("Spring 2025");
         System.out.println("Total: " + total );
