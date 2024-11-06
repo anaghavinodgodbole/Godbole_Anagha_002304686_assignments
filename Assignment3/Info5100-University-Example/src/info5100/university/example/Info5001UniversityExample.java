@@ -100,6 +100,38 @@ public class Info5001UniversityExample {
                 }
             }
         }
+
+          for(StudentProfile sp: sd.getStudentList()){
+            double totalCredits = 0.0;
+            double totalGradePoints = 0.0;
+            double sum = 0.0;
+            Transcript transcript = sp.getTranscript();
+            System.out.println("StudentID:" + sp.getStudentID());
+            ArrayList<SeatAssignment> courseList = sp.getCourseList();
+        
+            for(SeatAssignment c: courseList){
+                Course course = c.getAssociatedCourse();
+                String courseName = course.getCourseName();
+                String facultyID = c.getCourseOffer().getFacultyProfile().getFacultyID();
+                float grade = c.getGrade();
+                int creditHours = c.getCreditHours();
+                int price = c.getAssociatedCourse().getCoursePrice();
+                System.out.println("Course Name:" + courseName + " | " 
+                + "Professor: " + facultyID + " | " 
+                + "Grade" + grade + " | "
+                + "Credit Hours" + creditHours + " | "
+                + "price " + price + " | "
+            );
+                totalCredits += c.getCreditHours();
+                totalGradePoints += c.getGrade();
+                sum += price;
+            }
+            double finalGradePoint =  totalGradePoints * 4;
+            double gpa = finalGradePoint / totalCredits;
+            System.out.println("Student AVG GPA : " + String.format("%.2f", gpa));
+            System.out.println("Total tution : " + String.format("%.2f", sum));
+            System.out.println("...................................................................");
+        }
        
         int total = department.calculateRevenuesBySemester("Spring 2025");
         System.out.println("Total: " + total );
