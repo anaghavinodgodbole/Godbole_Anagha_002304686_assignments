@@ -63,6 +63,17 @@ public class Info5001UniversityExample {
             Person faculty = new Person(String.format("%07d", idNumber));
             FacultyProfile teacher = facultydirectory.newFacultyProfile(faculty);
         }
+
+        ArrayList<FacultyProfile> teacherList =  facultydirectory.getTeacherList();
+        for(int j = 0; j <coursesList.length; j++){
+            Course course = coursecatalog.newCourse(coursesList[j].getCourseName(), coursesList[j].getCOurseNumber(), coursesList[j].getCredits());
+            String no = coursesList[j].getCOurseNumber();
+            CourseOffer courseoffer = courseschedule.newCourseOffer(coursesList[j].getCOurseNumber());
+            if (courseoffer==null)return;
+            courseoffer.generatSeats(20);
+            FacultyProfile assignedTeacher = teacherList.get(j % teacherList.size()); 
+            courseoffer.AssignAsTeacher(assignedTeacher);
+        }
        
         int total = department.calculateRevenuesBySemester("Spring 2025");
         System.out.println("Total: " + total );
