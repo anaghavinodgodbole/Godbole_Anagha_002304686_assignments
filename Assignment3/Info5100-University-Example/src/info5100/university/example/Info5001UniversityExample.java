@@ -56,6 +56,13 @@ public class Info5001UniversityExample {
             new Course("Cloud Computing", "8888", 4)
         };
         
+        //Create 10 teachers
+        for (int i = 1; i <= 10; i++) {
+            int baseNumber = 0111111;
+            int idNumber = 0111111 + i + 100;
+            Person faculty = new Person(String.format("%07d", idNumber));
+            FacultyProfile teacher = facultydirectory.newFacultyProfile(faculty);
+        }
        
         int total = department.calculateRevenuesBySemester("Spring 2025");
         System.out.println("Total: " + total );
